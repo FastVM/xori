@@ -1,0 +1,27 @@
+html, body, #main {
+    width: 100%;
+    height: 100%;
+}
+
+.split {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.split > div {
+    flex: 1 1 0px;
+    flex-grow: 1;
+}
+
+
+#terminal {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
