@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build:wasm": "mkdir -p public && gmake -BC paka -f emcc.mak EFLAGS='--bind --embed-file ../bins/boot.bc@/boot.bc -s FORCE_FILESYSTEM=1 -s INVOKE_RUN=0 -s EXPORTED_FUNCTIONS=\"[_main]\" -s EXPORTED_RUNTIME_METHODS=\"[ccall]\" -s EXIT_RUNTIME=0 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s SINGLE_FILE=1 -s EXPORT_ES6=1 -s MODULARIZE=1  -DVM_EMCC'",
+    "build:js": "npx webpack",
+    "build": "npm run build:wasm && npm run build:js"
+  },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
     "monaco-editor": "^0.31.1",
+    "path-browserify": "^1.0.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",

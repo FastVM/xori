@@ -10,7 +10,10 @@ module.exports = {
     },
     resolve: {
         fallback: {
+            fs: false,
             util: false,
+            crypto: false,
+            path: require.resolve('path-browserify'),
         }
     },
     module: {
@@ -26,6 +29,7 @@ module.exports = {
             patterns: [
                 { from: "source/index.html", to: "index.html" },
                 { from: "source/style.css", to: "style.css" },
+                { from: "paka/bins/boot.bc", to: "boot.bc" },
                 { from: "node_modules/xterm/css/xterm.css", to: "xterm.css" },
             ],
         }),
