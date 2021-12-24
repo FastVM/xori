@@ -8,12 +8,17 @@ module.exports = {
         path: path.resolve(__dirname, 'public'),
         filename: 'index.js',
     },
+    resolve: {
+        fallback: {
+            util: false,
+        }
+    },
     module: {
         rules: [
             {
-            test: /\.css$/i,
-            use: ["style-loader", "css-loader"],
-            },
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            }
         ],
     },
     plugins: [

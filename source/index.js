@@ -2,6 +2,7 @@
 import {Terminal} from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import * as monaco from 'monaco-editor';
+import run from './term.js';
 
 document.body.onload = () => {
     const term = new Terminal();
@@ -18,6 +19,7 @@ document.body.onload = () => {
     const ed = monaco.editor.create(document.getElementById('editor'), {
         value: '',
         language: 'plaintext',
+        theme: 'vs-dark',
     });
 
     document.body.onresize = () => {
@@ -29,4 +31,6 @@ document.body.onload = () => {
         fit.fit();
         ed.layout();
     };
+
+    run('10', term.write);
 };
