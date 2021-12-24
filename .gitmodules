@@ -1,0 +1,3 @@
+[submodule "paka"]
+	path = paka
+	url = https://github.com/fastvm/paka
