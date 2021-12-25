@@ -1,10 +1,12 @@
 
 import {Terminal} from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
-import * as monaco from 'monaco-editor';
+import * as CodeMirror from 'codemirror';
 import run from './term.js';
 
 window.runit = () => {};
+
+const loaded = {};
 
 document.body.onload = () => {
     const term = new Terminal({
@@ -16,28 +18,32 @@ document.body.onload = () => {
 
     term.open(document.getElementById('terminal'));
 
-    fit.fit();
-
-    term.write('\x1b[?47h');
-
-    const ed = monaco.editor.create(document.getElementById('editor'), {
-        value: '',
-        language: 'plaintext',
-        theme: 'vs-dark',
+    const ed = CodeMirror(document.getElementById('editor'), {
+        mode: 'plaintext',
+        theme: 'material-darker',
     });
 
-    document.body.onresize = () => {
+    const dofit = () => {
         fit.fit();
-        ed.layout();
+        const ents = document.getElementsByClassName('xterm-screen');
+        for (const ent of ents) {
+            ent.style.height = '0';
+        }
+    }
+
+    dofit();
+
+    document.body.onresize = () => {
+        dofit();
     };
 
     document.getElementById('terminal').onresize = () => {
-        fit.fit();
-        ed.layout();
+        dofit();
     };
 
     window.runit = () => {
-        const src = ed.getValue();
+        let src = ed.getValue();
+        src = src.replace(/\s+/g, ' ');
         run(src, term);
     };
 

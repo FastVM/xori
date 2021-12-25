@@ -3,21 +3,21 @@
 <head>
     <script src="index.js" async></script>
     <link rel="stylesheet" href="xterm.css">
+    <link rel="stylesheet" href="codemirror.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme/material-darker.css">
     <title>xori</title>
 </head>
 <body>
     <div class="vsplit">
-        <div class="hsplit">
-            <div id="terminal">
-            </div>
-            <div id="editor">
-            </div>
-        </div>
         <div class="head" onclick="runit()">
             <h2>
                 [RUN!]
             </h2>
+        </div>
+        <div class="hsplit">
+            <div id="editor"></div>
+            <div id="terminal"></div>
         </div>
     </div>
 </body>

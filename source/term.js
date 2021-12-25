@@ -9,10 +9,10 @@ const run = async(src, term) => {
         term.write('\n');
     }
     const vm = await create(mod);
+    term.reset();
     for (const arg of args) {
         vm.ccall('vm_main_add_arg', 'void', ['string'], [arg]);
     }
-    term.reset();
     vm.ccall('vm_main_default', 'int', [], []);
 };
 

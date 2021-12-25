@@ -1,8 +1,10 @@
-const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
+const CopyPlugin = require('copy-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './source/index.js',
     output: {
         path: path.resolve(__dirname, 'public'),
@@ -30,8 +32,15 @@ module.exports = {
                 { from: "source/index.html", to: "index.html" },
                 { from: "source/style.css", to: "style.css" },
                 { from: "paka/bins/boot.bc", to: "boot.bc" },
+                { from: "node_modules/codemirror/lib/codemirror.css", to: "codemirror.css" },
+                { from: "node_modules/codemirror/theme", to: "theme" },
                 { from: "node_modules/xterm/css/xterm.css", to: "xterm.css" },
             ],
+        }),
+        new MonacoWebpackPlugin({
+            languages: [],
+            features: [],
+            globalAPI: false,
         }),
     ],
 };

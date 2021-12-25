@@ -13,10 +13,11 @@
   "dependencies": {
     "@wasm-tool/wasi": "^0.0.4",
     "@wasmer/wasmfs": "^0.12.0",
+    "compression": "^1.7.4",
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
+    "express": "^4.17.2",
     "loader-utils": "^3.2.0",
-    "monaco-editor": "^0.31.1",
     "path-browserify": "^1.0.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
