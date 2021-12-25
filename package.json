@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:wasm": "mkdir -p public && gmake -BC paka -f emcc.mak EFLAGS='--bind --embed-file ../bins/boot.bc@/boot.bc -s FORCE_FILESYSTEM=1 -s INVOKE_RUN=0 -s EXPORTED_FUNCTIONS=\"[_main]\" -s EXPORTED_RUNTIME_METHODS=\"[ccall]\" -s EXIT_RUNTIME=0 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s SINGLE_FILE=1 -s EXPORT_ES6=1 -s MODULARIZE=1  -DVM_EMCC'",
+    "build:wasm": "mkdir -p public && gmake -BC paka -f emcc.mak EFLAGS='--bind -s INVOKE_RUN=0 -g3 -s EXPORTED_FUNCTIONS=\"[_vm_main_default, _vm_main_add_arg]\" -s EXPORTED_RUNTIME_METHODS=\"[ccall]\" -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s SINGLE_FILE=1 -s EXPORT_ES6=0 -s MODULARIZE=1 -DVM_EMCC -lidbfs.js -s FORCE_FILESYSTEM=1 -s EXTRA_EXPORTED_RUNTIME_METHODS=\"['FS']\" --embed-file ../bins/boot.bc@boot.bc --embed-file ../lang/io.paka@io.paka'",
     "build:js": "npx webpack",
     "build": "npm run build:wasm && npm run build:js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@wasm-tool/wasi": "^0.0.4",
+    "@wasmer/wasmfs": "^0.12.0",
     "copy-webpack-plugin": "^10.2.0",
     "css-loader": "^6.5.1",
+    "loader-utils": "^3.2.0",
     "monaco-editor": "^0.31.1",
     "path-browserify": "^1.0.1",
     "style-loader": "^3.3.1",

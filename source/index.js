@@ -32,5 +32,5 @@ document.body.onload = () => {
         ed.layout();
     };
 
-    run('10', term.write);
+    run('putchar(49) putchar(10)', term);
 };
