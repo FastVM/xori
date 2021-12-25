@@ -2,17 +2,17 @@
 import * as create from '../paka/minivm/minivm.js';
 
 const run = async(src, term) => {
-    const args = ['./boot.bc', '-e', src];
+    const args = ['./boot.bc', '-e', `import("io.paka") ${src}`];
     const mod = {};
     mod["print"] = (txt) => {
-        const nl = txt.replace('\n', '\r\n');
-        term.write(nl);
+        term.write(txt);
+        term.write('\n');
     }
     const vm = await create(mod);
     for (const arg of args) {
         vm.ccall('vm_main_add_arg', 'void', ['string'], [arg]);
     }
-    term.clear();
+    term.reset();
     vm.ccall('vm_main_default', 'int', [], []);
 };
 

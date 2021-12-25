@@ -4,8 +4,12 @@ import { FitAddon } from 'xterm-addon-fit';
 import * as monaco from 'monaco-editor';
 import run from './term.js';
 
+window.runit = () => {};
+
 document.body.onload = () => {
-    const term = new Terminal();
+    const term = new Terminal({
+        convertEol: true,
+    });
     const fit = new FitAddon();
 
     term.loadAddon(fit);
@@ -32,5 +36,9 @@ document.body.onload = () => {
         ed.layout();
     };
 
-    run('putchar(49) putchar(10)', term);
+    window.runit = () => {
+        const src = ed.getValue();
+        run(src, term);
+    };
+
 };
