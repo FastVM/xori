@@ -1,0 +1,25 @@
+import("io.paka")
+
+def itoa(i) {
+    if i < 10 {
+        return ['0' + i]
+    } else {
+        return itoa(i / 10) ~ ['0' + i % 10]
+    }
+}
+
+def astoca(name) {
+    ret = ""
+    foreach chr@i: name {
+        if i != 0 {
+            ret = ret ~ ","
+        }
+        ret = ret ~ itoa(chr)
+    }
+    return ret
+}
+
+def fetch(name) {
+    ret = read("#return await fetch(String.fromCharCode(" ~ astoca(name) ~ "))")
+    return ret
+}

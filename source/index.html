@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <script src="index.js" async></script>
-    <link rel="stylesheet" href="xterm.css">
-    <link rel="stylesheet" href="codemirror.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="theme/material-darker.css">
+    <link rel="stylesheet" href="xterm.css" />
+    <link rel="stylesheet" href="codemirror.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme/material-darker.css" />
     <title>xori</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="vsplit">
-        <div class="head" onclick="runit()">
-            <h2>
-                [RUN!]
-            </h2>
-        </div>
+      <div class="head">
         <div class="hsplit">
-            <div id="editor"></div>
-            <div id="terminal"></div>
+          <button onclick="runit()">RUN</button>
+          <p id="time">0ms</p>
         </div>
+      </div>
+      <div class="hsplit">
+        <div id="editor"></div>
+        <div id="terminal"></div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

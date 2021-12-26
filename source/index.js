@@ -1,12 +1,10 @@
 
-import {Terminal} from 'xterm';
+import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import * as CodeMirror from 'codemirror';
 import run from './term.js';
 
-window.runit = () => {};
-
-const loaded = {};
+window.runit = () => { };
 
 document.body.onload = () => {
     const term = new Terminal({
@@ -41,10 +39,11 @@ document.body.onload = () => {
         dofit();
     };
 
-    window.runit = () => {
+    window.runit = async() => {
         let src = ed.getValue();
         src = src.replace(/\s+/g, ' ');
-        run(src, term);
+        const ms = await run(src, term);
+        document.getElementById('time').innerText = `${ms}ms`;
     };
 
 };
