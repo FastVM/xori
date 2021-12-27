@@ -2,6 +2,3 @@
 	path = paka
 	url = https://github.com/fastvm/paka
 	branch = main
-[submodule "wasi-libc"]
-	path = wasi-libc
-	url = https://github.com/webassembly/wasi-libc

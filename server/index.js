@@ -1,8 +1,13 @@
-const path = require('path');
 
+const path = require('path');
 const express = require('express');
+const compression = require('compression');
 
 const app = express();
+
+app.use(compression({
+    level: 9,
+}));
 
 app.use(express.static(path.join(__dirname, '../public')));
 

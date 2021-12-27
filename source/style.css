@@ -14,14 +14,17 @@ body,
 }
 
 #editor {
+  color:rgb(198, 198, 198);
+  background-color: #212121;
   max-width: 50vw;
+  min-width: 50vw;
 }
 
 #terminal {
+  font-family: 'Courier New', monospace;
   background-color: black;
   color: rgb(198, 198, 198);
   max-width: 50vw;
-  overflow: hidden;
 }
 
 .hsplit {
@@ -64,12 +67,7 @@ body,
   margin: 10px;
 }
 
-#terminal {
-  overflow-x: hidden;
-}
-
 body {
   margin: 0;
   box-sizing: border-box;
-  overflow-y: hidden;
 }

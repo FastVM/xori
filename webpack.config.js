@@ -8,14 +8,15 @@ module.exports = {
     entry: './source/index.js',
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: 'index.js',
+        filename: '[name].js',
     },
     resolve: {
         fallback: {
             fs: false,
             util: false,
             crypto: false,
-            path: require.resolve('path-browserify'),
+            // path: require.resolve('path-browserify'),
+            path: false,
         }
     },
     module: {
@@ -31,11 +32,9 @@ module.exports = {
             patterns: [
                 { from: "source/index.html", to: "index.html" },
                 { from: "source/style.css", to: "style.css" },
-                { from: "paka/bins/boot.bc", to: "boot.bc" },
                 { from: "paka/minivm/minivm.wasm", to: "minivm.wasm" },
                 { from: "node_modules/codemirror/lib/codemirror.css", to: "codemirror.css" },
                 { from: "node_modules/codemirror/theme", to: "theme" },
-                { from: "node_modules/xterm/css/xterm.css", to: "xterm.css" },
             ],
         }),
     ],

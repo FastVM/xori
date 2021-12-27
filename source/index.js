@@ -1,46 +1,39 @@
 
-import { Terminal } from 'xterm';
-import { FitAddon } from 'xterm-addon-fit';
-import * as CodeMirror from 'codemirror';
 import run from './term.js';
+
+import('codemirror' /* webpackChunkName: 'codemirror' */).then(({ default: CodeMirror }) => {
+    const edVal = CodeMirror.fromTextArea(document.getElementById('editor'), {
+        mode: 'plaintext',
+        theme: 'material-darker',
+        lineNumbers: true,
+    });
+    ed = () => {
+        return edVal.getValue();
+    }
+});
 
 window.runit = () => { };
 
+window.ed = () => {
+    return document.getElementById('editor').value;
+};
+
 document.body.onload = () => {
-    const term = new Terminal({
-        convertEol: true,
-    });
-    const fit = new FitAddon();
+    const termElem = document.getElementById('terminal');
 
-    term.loadAddon(fit);
+    const term = {
+        write: (code) => {
+            termElem.innerText += String(code);
+        },
 
-    term.open(document.getElementById('terminal'));
-
-    const ed = CodeMirror(document.getElementById('editor'), {
-        mode: 'plaintext',
-        theme: 'material-darker',
-    });
-
-    const dofit = () => {
-        fit.fit();
-        const ents = document.getElementsByClassName('xterm-screen');
-        for (const ent of ents) {
-            ent.style.height = '0';
-        }
-    }
-
-    dofit();
-
-    document.body.onresize = () => {
-        dofit();
-    };
-
-    document.getElementById('terminal').onresize = () => {
-        dofit();
+        reset: () => {
+            termElem.innerText = '';
+        },
     };
 
     window.runit = async() => {
-        let src = ed.getValue();
+        let src = ed();
+        console.log(src);
         src = src.replace(/\s+/g, ' ');
         const ms = await run(src, term);
         document.getElementById('time').innerText = `${ms}ms`;

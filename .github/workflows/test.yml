@@ -1,0 +1,22 @@
+name: Actions Test
+on: [push]
+jobs:
+  reploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: lovasoa/setup-emscripten@master
+      - run: make -B CC=cc CFLAGS+=-flto LFLAGS+=-flto OPT=-Ofast
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npm build:wasm
+      - run: npm build:js
+      - uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./run
