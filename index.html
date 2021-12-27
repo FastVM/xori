@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>xori</title>
+    <link rel="stylesheet" href="codemirror.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme/material-darker.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo="> 
+    <script src="main.js" defer async></script>
+  </head>
+  <body>
+    <div class="vsplit">
+      <div class="head">
+        <div class="hsplit">
+          <button onclick="runit()">RUN</button>
+          <p id="time">0ms</p>
+        </div>
+      </div>
+      <div class="hsplit">
+        <textarea id="editor"></textarea>
+        <div id="terminal"></div>
+      </div>
+    </div>
+  </body>
+</html>

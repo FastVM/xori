@@ -1,0 +1,73 @@
+html,
+body,
+#main {
+  width: 100%;
+  height: 100%;
+}
+
+.CodeMirror {
+  height: 100%;
+}
+
+#time {
+  text-align: right;
+}
+
+#editor {
+  color:rgb(198, 198, 198);
+  background-color: #212121;
+  max-width: 50vw;
+  min-width: 50vw;
+}
+
+#terminal {
+  font-family: 'Courier New', monospace;
+  background-color: black;
+  color: rgb(198, 198, 198);
+  max-width: 50vw;
+}
+
+.hsplit {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.hsplit > div {
+  flex: 1 1 0px;
+  flex-grow: 1;
+}
+
+.vsplit {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.vsplit > .head {
+  flex-basis: 3%;
+  flex-grow: 1;
+  background-color: #111;
+  color: rgb(198, 198, 198);
+}
+
+.vsplit > .hsplit {
+  flex-basis: 97%;
+  flex-grow: 1;
+}
+
+.head > h2 {
+  text-align: center;
+}
+
+.head > .hsplit {
+  justify-content: space-between;
+  margin: 10px;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
