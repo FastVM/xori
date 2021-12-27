@@ -11,7 +11,6 @@ jobs:
         with: 
           version: 2.0.33
           actions-cache-folder: 'emsdk-cache'
-      - run: make -B CC=cc CFLAGS+=-flto LFLAGS+=-flto OPT=-Ofast
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
