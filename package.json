@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:wasm": "mkdir -p public && make -Bj -C paka -f emcc.mak EFLAGS='--bind -fno-rtti -O3 -ffast-math -fno-exceptions -s INVOKE_RUN=0 -Wno-unused-command-line-argument -s EXPORTED_RUNTIME_METHODS=\"[ccall, FS]\" -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s EXPORT_ES6=0 -s MODULARIZE=1 -DVM_EMCC -DVM_USE_ASYNC -lidbfs.js -s FORCE_FILESYSTEM=1 --embed-file ../bins/boot.vm@boot.vm --embed-file ../../source/browser.paka@browser.paka --embed-file ../lang/io.paka@io.paka -s ASSERTIONS=0'",
+    "build:wasm": "mkdir -p public && make -j -C paka -f emcc.mak EFLAGS='--bind -fno-rtti -O3 -ffast-math -fno-exceptions -s INVOKE_RUN=0 -Wno-unused-command-line-argument -s EXPORTED_RUNTIME_METHODS=\"[ccall, FS]\" -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s EXPORT_ES6=0 -s MODULARIZE=1 -DVM_EMCC -DVM_USE_ASYNC -lidbfs.js -s FORCE_FILESYSTEM=1 --embed-file ../bins/boot.vm@boot.vm --embed-file ../../source/browser.paka@browser.paka --embed-file ../lang/io.paka@io.paka -s ASSERTIONS=0'",
     "build:js": "npx webpack",
     "build:watch": "npx webpack --progress --watch",
     "build": "npm run build:wasm && npm run build:js"
