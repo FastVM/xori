@@ -1,20 +1,22 @@
 name: Actions Test
 on: [push]
 jobs:
-  reploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - uses: lovasoa/setup-emscripten@master
+      - uses: mymindstorm/setup-emsdk@v11
+        with: 
+          version: 2.0.33
+          actions-cache-folder: 'emsdk-cache'
       - run: make -B CC=cc CFLAGS+=-flto LFLAGS+=-flto OPT=-Ofast
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
       - run: npm install
-      - run: npm build:wasm
-      - run: npm build:js
+      - run: npm build
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
