@@ -6,19 +6,18 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme/material-darker.css" />
     <link rel="icon" href="data:;base64,iVBORw0KGgo="> 
+    <meta name="viewport" content="width=device-width">
     <script src="main.js" defer async></script>
   </head>
   <body>
-    <div class="vsplit">
-      <div class="head">
-        <div class="hsplit">
-          <button onclick="runit()">RUN</button>
-          <p id="time">0ms</p>
-        </div>
+    <div class="head-and-main">
+      <div class="header">
+        <button class="header-entry" onclick="runit()">RUN</button>
+        <p class="header-entry" id="time">0ms</p>
       </div>
-      <div class="hsplit">
+      <div class="main">
         <textarea id="editor"></textarea>
-        <div id="terminal"></div>
+        <div class="main-term" id="terminal"></div>
       </div>
     </div>
   </body>

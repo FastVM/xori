@@ -1,6 +1,5 @@
 
 const minivmMod = import('../paka/minivm/minivm.js' /* webpackChunkName: 'minivm' */).then(async (minivm) => {
-   
     return minivm;
 });
 
@@ -61,6 +60,7 @@ const saveWith = (vm, state) => {
         };
 
         const vmObj = await save(jsObj);
+        vm.ccall('vm_api_reset', vm_none_t, [vm_state_t], [state]);
         vm.ccall('vm_api_stack_set', vm_none_t, [vm_state_t, vm_size_t, vm_obj_t], [state, out, vmObj]);
     };
 };
