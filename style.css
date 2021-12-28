@@ -5,7 +5,7 @@ html, body {
   overflow-y: hidden;
 }
 
-* {
+body, .head-and-main, .header-entry {
   margin: 0;
   border: 0;
   padding: 0;
