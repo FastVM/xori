@@ -39,6 +39,7 @@ html, body {
 
 #editor {
   overflow-y: scroll;
+  width: 100%;
 }
 
 .main-term {
