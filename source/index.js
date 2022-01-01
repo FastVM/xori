@@ -75,5 +75,4 @@ document.body.onload = () => {
         const ms = await run(src, term);
         document.getElementById('time').innerText = `${ms}ms`;
     };
-
 };
