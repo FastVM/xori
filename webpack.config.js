@@ -31,6 +31,7 @@ module.exports = {
             patterns: [
                 { from: "source/index.html", to: "index.html" },
                 { from: "source/static", to: "static" },
+                { from: "paka/minivm/minivm.js", to: "minivm.js" },
                 { from: "paka/minivm/minivm.wasm", to: "minivm.wasm" },
                 { from: "node_modules/codemirror/lib/codemirror.css", to: "codemirror.css" },
                 { from: "node_modules/codemirror/theme", to: "theme" },

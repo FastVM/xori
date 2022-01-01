@@ -1,5 +1,3 @@
-const Module = require('../paka/minivm/minivm.js');
-
 const minivmMod = import('../paka/minivm/minivm.js' /* webpackChunkName: 'minivm' */).then(async (minivm) => {
     return minivm;
 });
