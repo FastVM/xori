@@ -105,7 +105,6 @@ document.body.onload = () => {
     };
 
     const runMsg = async(msg) => {
-        lastTime = new Date();
         requestAnimationFrame(nextFrame);
 
         if (worker != null) {
@@ -123,7 +122,10 @@ document.body.onload = () => {
                 term.write('\n');
             } else if (type == 'save') {
                 localStorage.setItem('vm.save', JSON.stringify(value));
-            } else {
+                localStorage.setItem('vm.save.text', text);
+                const ms = new Date() - lastTime;
+                localStorage.setItem('vm.save.time', ms);
+        } else {
                 throw new Error('message error: ' + type);
             }
         };
@@ -132,6 +134,8 @@ document.body.onload = () => {
     const lastSave = localStorage.getItem('vm.save');
 
     if (lastSave != null) {
+        lastTime = new Date() - (localStorage.getItem('vm.save.time') ?? 0);
+        text = localStorage.getItem('vm.save.text') ?? "";
         runMsg({type: 'save', value: lastSave});
     }
 
@@ -139,6 +143,7 @@ document.body.onload = () => {
         term.reset();
         localStorage.setItem('page.term.text', '');
         let src = ed().replace(/[\t\r]+/g, ' ');
+        lastTime = new Date();
         await runMsg({type: 'src', value: src})
     };
 };
