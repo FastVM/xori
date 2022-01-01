@@ -1,26 +1,59 @@
 
 import run from './term.js';
 
+const keymaps = {};
+const keymap = async(loadKeyMap) => {
+    let ret = keymaps[loadKeyMap];
+    if (ret != null) {
+        return ret;
+    }
+    if (loadKeyMap === 'vim') {
+        ret = await import('codemirror/keymap/vim');
+    } else if (loadKeyMap === 'emacs') {
+        ret = await import('codemirror/keymap/emacs');
+    } else if (loadKeyMap === 'sublime') {
+        ret = await import('codemirror/keymap/sublime');
+    }
+    keymaps[loadKeyMap] = ret;
+    return ret;
+}
+
+let firstEditTheme = 'material-darker';
+let setEditTheme = (theme) => {
+    firstEditTheme = theme;
+};
+
 import('codemirror' /* webpackChunkName: 'codemirror' */).then(async ({ default: CodeMirror }) => {
     const edVal = CodeMirror.fromTextArea(document.getElementById('editor'), {
         mode: 'plaintext',
         theme: 'material-darker',
         lineNumbers: true,
-        keymap: 'emacs',
+        theme: firstEditTheme,
     });
-    ed = () => {
+    window.ed = () => {
         return edVal.getValue();
-    }
+    };
+    setEditTheme = (theme) => {
+        edVal.setOption('theme', theme);
+    };
+    keymap();
 });
 
 
 window.runit = () => { };
-window.keymapit = async (self) => {
-
-};
 
 window.ed = () => {
     return document.getElementById('editor').value;
+};
+
+window.loadtheme = ({edit, page}) => {
+    if (edit != null) {
+        document.getElementById('edit-style').href = `theme/${edit}.css`;
+        setEditTheme(edit);
+    }
+    if (page != null) {
+        document.getElementById('page-style').href = `static/${page}.css`;
+    }
 };
 
 document.body.onload = () => {
