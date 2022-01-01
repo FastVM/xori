@@ -26,9 +26,9 @@ body, .head-and-main, .header-entry {
 .header-entry {
   flex-grow: 1;
   text-align: center;
-  color: #CCC;
-  border-color: #CCC;
-  background-color: #111;
+  color: var(--header-entry-color);
+  border-color: var(--header-entry-color);
+  background-color: var(--header-entry-background-color);
 }
 
 .main {
@@ -43,8 +43,8 @@ body, .head-and-main, .header-entry {
 }
 
 .main-term {
-  background-color: #000;
-  color: #CCC;
+  background-color: var(--term-background);
+  color: var(--term-text);
   white-space: pre;
   font-family: 'Courier New', monospace;
   flex-grow: 1;
@@ -55,4 +55,5 @@ body, .head-and-main, .header-entry {
   flex-grow: 1;
   width: 100%;
   height: 100%;
+  font-size: 13px;
 }

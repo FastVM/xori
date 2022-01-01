@@ -1,1 +1,319 @@
-(()=>{"use strict";var e,t,r,n,a={},o={};function i(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}};return a[e].call(r.exports,r,r.exports,i),r.exports}i.m=a,t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,i.t=function(r,n){if(1&n&&(r=this(r)),8&n)return r;if("object"==typeof r&&r){if(4&n&&r.__esModule)return r;if(16&n&&"function"==typeof r.then)return r}var a=Object.create(null);i.r(a);var o={};e=e||[null,t({}),t([]),t(t)];for(var c=2&n&&r;"object"==typeof c&&!~e.indexOf(c);c=t(c))Object.getOwnPropertyNames(c).forEach((e=>o[e]=()=>r[e]));return o.default=()=>r,i.d(a,o),a},i.d=(e,t)=>{for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=e=>Promise.all(Object.keys(i.f).reduce(((t,r)=>(i.f[r](e,t),t)),[])),i.u=e=>({528:"codemirror",931:"minivm"}[e]+".js"),i.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),i.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r={},n="traffic:",i.l=(e,t,a,o)=>{if(r[e])r[e].push(t);else{var c,l;if(void 0!==a)for(var s=document.getElementsByTagName("script"),u=0;u<s.length;u++){var f=s[u];if(f.getAttribute("src")==e||f.getAttribute("data-webpack")==n+a){c=f;break}}c||(l=!0,(c=document.createElement("script")).charset="utf-8",c.timeout=120,i.nc&&c.setAttribute("nonce",i.nc),c.setAttribute("data-webpack",n+a),c.src=e),r[e]=[t];var d=(t,n)=>{c.onerror=c.onload=null,clearTimeout(p);var a=r[e];if(delete r[e],c.parentNode&&c.parentNode.removeChild(c),a&&a.forEach((e=>e(n))),t)return t(n)},p=setTimeout(d.bind(null,void 0,{type:"timeout",target:c}),12e4);c.onerror=d.bind(null,c.onerror),c.onload=d.bind(null,c.onload),l&&document.head.appendChild(c)}},i.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},(()=>{var e;i.g.importScripts&&(e=i.g.location+"");var t=i.g.document;if(!e&&t&&(t.currentScript&&(e=t.currentScript.src),!e)){var r=t.getElementsByTagName("script");r.length&&(e=r[r.length-1].src)}if(!e)throw new Error("Automatic publicPath is not supported in this browser");e=e.replace(/#.*$/,"").replace(/\?.*$/,"").replace(/\/[^\/]+$/,"/"),i.p=e})(),(()=>{var e={179:0};i.f.j=(t,r)=>{var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var a=new Promise(((r,a)=>n=e[t]=[r,a]));r.push(n[2]=a);var o=i.p+i.u(t),c=new Error;i.l(o,(r=>{if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var a=r&&("load"===r.type?"missing":r.type),o=r&&r.target&&r.target.src;c.message="Loading chunk "+t+" failed.\n("+a+": "+o+")",c.name="ChunkLoadError",c.type=a,c.request=o,n[1](c)}}),"chunk-"+t,t)}};var t=(t,r)=>{var n,a,[o,c,l]=r,s=0;if(o.some((t=>0!==e[t]))){for(n in c)i.o(c,n)&&(i.m[n]=c[n]);l&&l(i)}for(t&&t(r);s<o.length;s++)a=o[s],i.o(e,a)&&e[a]&&e[a][0](),e[o[s]]=0},r=self.webpackChunktraffic=self.webpackChunktraffic||[];r.forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r))})();const c=i.e(931).then(i.t.bind(i,260,23)).then((async e=>e)),l=Object.getPrototypeOf((async()=>{})).constructor,s="void",u="int",f="int",d="int",p=[Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array,BigUint64Array,BigUint64Array],m=(e,t)=>async(r,n)=>{const a=async r=>{const n=e.ccall("vm_api_new",d,[u,f],[t,r.length]);for(let a=0;a<r.length;a++){const i=await o(r[a]);e.ccall("vm_api_set",s,[u,d,f,d],[t,n,a,i])}return n},o=async r=>{if("string"==typeof x)return await a(Uint8Array.from(r).buffer);if(Array.isArray(r))return await a(r);if("number"==typeof r)return await(async r=>e.ccall("vm_api_of_num",d,[u,"int"],[t,r]))(r);if(null==r)return await(async()=>e.ccall("vm_api_of_none",d,[u],[t]))();if(r instanceof Response)return await o(await r.arrayBuffer());if(r instanceof ArrayBuffer)return await o(new Uint8Array(r));for(const e of p)if(r instanceof e)return await a(Array.from(r));throw new Error(`cannot serialize: ${r}`)},i=await o(n);e.ccall("vm_api_reset",s,[u],[t]),e.ccall("vm_api_stack_set",s,[u,f,d],[t,r,i])};i.e(528).then(i.t.bind(i,631,23)).then((async({default:e})=>{const t=e.fromTextArea(document.getElementById("editor"),{mode:"plaintext",theme:"material-darker",lineNumbers:!0,keymap:"emacs"});ed=()=>t.getValue()})),window.runit=()=>{},window.keymapit=async e=>{},window.ed=()=>document.getElementById("editor").value,document.body.onload=()=>{const e=document.getElementById("terminal"),t={write:t=>{e.innerText+=String(t)},reset:()=>{e.innerText=""}};window.runit=async()=>{let e=ed();e=e.replace(/\s+/g," ");const r=await(async(e,t)=>{const{default:r}=await c;let n=[];const a=["./boot.vm","-e",`import("browser.paka") ${e}`],o={print:e=>{t.write(e),t.write("\n")},vm_do_eval_func:(e,t)=>{n.push([e,new l(t)])},vm_do_file_put_func:e=>{}},i=await r(o),s=new Date;t.reset();for(const e of a)i.ccall("vm_main_add_arg","void",["string"],[e]);let u=i.ccall("vm_main_default","int",[],[]);for(;0!==u;){const e=m(i,u);for(;n.length>0;){let[t,r]=n.pop();const a=await r();await e(t,a)}u=i.ccall("vm_run","int",["int"],[u])}return new Date-s})(e,t);document.getElementById("time").innerText=`${r}ms`}}})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./source/index.js":
+/*!*************************!*\
+  !*** ./source/index.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _term_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./term.js */ \"./source/term.js\");\n\n\n\nconst keymaps = {};\nconst keymap = async(loadKeyMap) => {\n    let ret = keymaps[loadKeyMap];\n    if (ret != null) {\n        return ret;\n    }\n    if (loadKeyMap === 'vim') {\n        ret = await Promise.all(/*! import() */[__webpack_require__.e(\"codemirror\"), __webpack_require__.e(\"vendors-node_modules_codemirror_addon_edit_matchbrackets_js-node_modules_codemirror_addon_sea-315257\"), __webpack_require__.e(\"vendors-node_modules_codemirror_keymap_vim_js\")]).then(__webpack_require__.t.bind(__webpack_require__, /*! codemirror/keymap/vim */ \"./node_modules/codemirror/keymap/vim.js\", 23));\n    } else if (loadKeyMap === 'emacs') {\n        ret = await Promise.all(/*! import() */[__webpack_require__.e(\"codemirror\"), __webpack_require__.e(\"vendors-node_modules_codemirror_keymap_emacs_js\")]).then(__webpack_require__.t.bind(__webpack_require__, /*! codemirror/keymap/emacs */ \"./node_modules/codemirror/keymap/emacs.js\", 23));\n    } else if (loadKeyMap === 'sublime') {\n        ret = await Promise.all(/*! import() */[__webpack_require__.e(\"codemirror\"), __webpack_require__.e(\"vendors-node_modules_codemirror_addon_edit_matchbrackets_js-node_modules_codemirror_addon_sea-315257\"), __webpack_require__.e(\"vendors-node_modules_codemirror_keymap_sublime_js\")]).then(__webpack_require__.t.bind(__webpack_require__, /*! codemirror/keymap/sublime */ \"./node_modules/codemirror/keymap/sublime.js\", 23));\n    }\n    keymaps[loadKeyMap] = ret;\n    return ret;\n}\n\nlet firstEditTheme = 'material-darker';\nlet setEditTheme = (theme) => {\n    firstEditTheme = theme;\n};\n\n__webpack_require__.e(/*! import() | codemirror */ \"codemirror\").then(__webpack_require__.t.bind(__webpack_require__, /*! codemirror */ \"./node_modules/codemirror/lib/codemirror.js\", 23)).then(async ({ default: CodeMirror }) => {\n    const edVal = CodeMirror.fromTextArea(document.getElementById('editor'), {\n        mode: 'plaintext',\n        theme: 'material-darker',\n        lineNumbers: true,\n        theme: firstEditTheme,\n    });\n    window.ed = () => {\n        return edVal.getValue();\n    };\n    setEditTheme = (theme) => {\n        edVal.setOption('theme', theme);\n    };\n    keymap();\n});\n\n\nwindow.runit = () => { };\n\nwindow.ed = () => {\n    return document.getElementById('editor').value;\n};\n\nwindow.loadtheme = ({edit, page}) => {\n    if (edit != null) {\n        document.getElementById('edit-style').href = `theme/${edit}.css`;\n        setEditTheme(edit);\n    }\n    if (page != null) {\n        document.getElementById('page-style').href = `static/${page}.css`;\n    }\n};\n\ndocument.body.onload = () => {\n    const termElem = document.getElementById('terminal');\n\n    const term = {\n        write: (code) => {\n            termElem.innerText += String(code);\n        },\n\n        reset: () => {\n            termElem.innerText = '';\n        },\n    };\n\n    window.runit = async () => {\n        let src = ed();\n        src = src.replace(/\\s+/g, ' ');\n        const ms = await (0,_term_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(src, term);\n        document.getElementById('time').innerText = `${ms}ms`;\n    };\n\n};\n\n\n//# sourceURL=webpack://traffic/./source/index.js?");
+
+/***/ }),
+
+/***/ "./source/term.js":
+/*!************************!*\
+  !*** ./source/term.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\nconst minivmMod = __webpack_require__.e(/*! import() | minivm */ \"minivm\").then(__webpack_require__.t.bind(__webpack_require__, /*! ../paka/minivm/minivm.js */ \"./paka/minivm/minivm.js\", 23)).then(async (minivm) => {\n    return minivm;\n});\n\nconst AsyncFunction = Object.getPrototypeOf(async () => { }).constructor;\n\nconst vm_none_t = 'void';\nconst vm_state_t = 'int';\nconst vm_size_t = 'int';\nconst vm_num_t = 'int';\nconst vm_obj_t = 'int';\n\nconst typesLikeArray = [Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, Uint16Array, Int32Array, Uint32Array, Float32Array, Float64Array, BigUint64Array, BigUint64Array];\n\nconst saveWith = (vm, state) => {\n    return async (out, jsObj) => {\n        const saveArr = async (arr) => {\n            const ret = vm.ccall('vm_api_new', vm_obj_t, [vm_state_t, vm_size_t], [state, arr.length]);\n            for (let i = 0; i < arr.length; i++) {\n                const obj = await save(arr[i]);\n                vm.ccall('vm_api_set', vm_none_t, [vm_state_t, vm_obj_t, vm_size_t, vm_obj_t], [state, ret, i, obj]);\n            }\n            return ret;\n        };\n\n        const saveNum = async (num) => {\n            return vm.ccall('vm_api_of_num', vm_obj_t, [vm_state_t, vm_num_t], [state, num]);\n        }\n\n        const saveNone = async () => {\n            return vm.ccall('vm_api_of_none', vm_obj_t, [vm_state_t], [state]);\n        };\n\n        const save = async (obj) => {\n            if (typeof x === 'string') {\n                return await saveArr(Uint8Array.from(obj).buffer);\n            }\n            if (Array.isArray(obj)) {\n                return await saveArr(obj);\n            }\n            if (typeof obj === 'number') {\n                return await saveNum(obj);\n            }\n            if (obj == null) {\n                return await saveNone();\n            }\n            if (obj instanceof Response) {\n                return await save(await obj.arrayBuffer());\n            }\n            if (obj instanceof ArrayBuffer) {\n                return await save(new Uint8Array(obj));\n            }\n            for (const type of typesLikeArray) {\n                if (obj instanceof type) {\n                    return await saveArr(Array.from(obj));\n                }\n            }\n            throw new Error(`cannot serialize: ${obj}`);\n        };\n\n        const vmObj = await save(jsObj);\n        vm.ccall('vm_api_reset', vm_none_t, [vm_state_t], [state]);\n        vm.ccall('vm_api_stack_set', vm_none_t, [vm_state_t, vm_size_t, vm_obj_t], [state, out, vmObj]);\n    };\n};\n\nconst run = async (src, term) => {\n    const { default: create } = await minivmMod;\n\n    let todo = [];\n\n    const args = ['./boot.vm', '-e', `import(\"browser.paka\") ${src}`];\n    const mod = {};\n    mod[\"print\"] = (txt) => {\n        term.write(txt);\n        term.write('\\n');\n    }\n    mod.vm_do_eval_func = (out, str) => {\n        todo.push([out, new AsyncFunction(str)]);\n    };\n\n    mod.vm_do_file_put_func = (str) => { };\n\n    const vm = await create(mod);\n    const start = new Date();\n    term.reset();\n    for (const arg of args) {\n        vm.ccall('vm_main_add_arg', 'void', ['string'], [arg]);\n    }\n    let state = vm.ccall('vm_main_default', 'int', [], []);\n    while (state !== 0) {\n        const save = saveWith(vm, state)\n        while (todo.length > 0) {\n            let [out, cur] = todo.pop();\n            const res = await cur();\n            await save(out, res);\n        }\n        state = vm.ccall('vm_run', 'int', ['int'], [state]);\n    }\n    const end = new Date();\n    return end - start;\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (run);\n\n\n\n//# sourceURL=webpack://traffic/./source/term.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
+/******/ 			}
+/******/ 			def['default'] = () => (value);
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		var dataWebpackPrefix = "traffic:";
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			;
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						} else installedChunks[chunkId] = 0;
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 		
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunktraffic"] = self["webpackChunktraffic"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./source/index.js");
+/******/ 	
+/******/ })()
+;
