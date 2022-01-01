@@ -27,7 +27,7 @@ import('codemirror' /* webpackChunkName: 'codemirror' */).then(async ({ default:
         lineNumbers: true,
         theme: localStorage.getItem('theme.edit') ?? "dark",
     });
-    edVal.setValue(localStorage.getItem('/open.paka'));
+    edVal.setValue(localStorage.getItem('/open.paka') ?? "");
     edVal.on('change', () => {
         localStorage.setItem('/open.paka', edVal.getValue());
     });
@@ -59,14 +59,9 @@ window.loadtheme = ({edit, page}) => {
 };
 
 document.body.onload = () => {
-    const pageTheme = localStorage.getItem('theme.page');
-    if (pageTheme !== 'dark') {
-        loadtheme({page: pageTheme});
-    }
-    const editTheme = localStorage.getItem('theme.edit');
-    if (editTheme !== 'material-darker') {
-        loadtheme({edit: editTheme});
-    }
+    const pageTheme = localStorage.getItem('theme.page') ?? "dark";
+    const editTheme = localStorage.getItem('theme.edit') ?? "material-darker";
+    loadtheme({edit: editTheme, page: pageTheme});
 
     const termElem = document.getElementById('terminal');
 
