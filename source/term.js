@@ -1,3 +1,4 @@
+const Module = require('../paka/minivm/minivm.js');
 
 const minivmMod = import('../paka/minivm/minivm.js' /* webpackChunkName: 'minivm' */).then(async (minivm) => {
     return minivm;
@@ -65,31 +66,14 @@ const saveWith = (vm, state) => {
     };
 };
 
-const run = async (src, term) => {
-    const { default: create } = await minivmMod;
-
-    let todo = [];
-
-    const args = ['./boot.vm', '-e', `import("browser.paka") ${src}`];
-    const mod = {};
-    mod["print"] = (txt) => {
-        term.write(txt);
-        term.write('\n');
-    }
-    mod.vm_do_eval_func = (out, str) => {
-        todo.push([out, new AsyncFunction(str)]);
-    };
-
-    mod.vm_do_file_put_func = (str) => { };
-
-    const vm = await create(mod);
-    const start = new Date();
-    term.reset();
-    for (const arg of args) {
-        vm.ccall('vm_main_add_arg', 'void', ['string'], [arg]);
-    }
-    let state = vm.ccall('vm_main_default', 'int', [], []);
+const runState = async(state, vm, todo) => {
+    let rem = 0;
     while (state !== 0) {
+        if (rem < 0) {
+            rem = 2 ** 20;
+            vm.ccall('vm_api_save', 'void', ['int'], [state]);
+        }
+        rem -= 1;
         const save = saveWith(vm, state)
         while (todo.length > 0) {
             let [out, cur] = todo.pop();
@@ -98,9 +82,72 @@ const run = async (src, term) => {
         }
         state = vm.ccall('vm_run', 'int', ['int'], [state]);
     }
-    const end = new Date();
-    return end - start;
+    self.postMessage({type: 'end'});
+}
+
+const runSrc = async (src) => {
+    const { default: create } = await minivmMod;
+
+    let todo = [];
+
+    const args = ['./boot.vm', '-e', `import("browser.paka") ${src}`];
+    const mod = {};
+    mod["print"] = (txt) => {
+        self.postMessage({type: 'line', value: txt});
+    };
+    mod.vm_do_eval_func = (out, str) => {
+        todo.push([out, new AsyncFunction(str)]);
+    };
+    mod.vm_do_saved = (buf) => {
+        self.postMessage({type: 'save', value: buf});
+    };
+
+    mod.vm_do_file_put_func = (str) => { };
+
+    const vm = await create(mod);
+    for (const arg of args) {
+        vm.ccall('vm_main_add_arg', 'void', ['string'], [arg]);
+    }
+    let state = vm.ccall('vm_main_default', 'int', [], []);
+    runState(state, vm, todo);
 };
 
-export default run;
+const runSave = async (save) => {
+    const { default: create } = await minivmMod;
 
+    let todo = [];
+
+    const mod = {};
+    mod["print"] = (txt) => {
+        self.postMessage({type: 'line', value: txt});
+    };
+    mod.vm_do_eval_func = (out, str) => {
+        todo.push([out, new AsyncFunction(str)]);
+    };
+    mod.vm_do_saved = (buf) => {
+        self.postMessage({type: 'save', value: buf});
+    };
+
+    mod.vm_do_file_put_func = (str) => { };
+
+    const vm = await create(mod);
+    
+    const dataPtr = mod._malloc(save.length);
+    const dataHeap = new Uint8Array(mod.HEAPU8.buffer, dataPtr, save.length);
+    dataHeap.set( new Uint8Array(save) );
+
+    let state = vm.ccall('vm_api_load_save', 'int', ['int', 'pointer'], [save.length, dataPtr]);
+    mod._free(dataPtr);
+
+    runState(state, vm, todo);
+}
+
+self.onmessage = ({data: {type, value}}) => {
+    if (type === 'src') {
+        runSrc(value);
+    } else if (type === 'save') {
+        runSave(JSON.parse(value));
+    } else {
+        throw new Error('err self message: ' + type);
+    }
+};
