@@ -10,7 +10,7 @@ jobs:
       - name: Setup cache
         uses: actions/cache@v2
         with:
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json' }}
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
           path: |
             '**/node_modules'
             '**/emsdk-cache'
