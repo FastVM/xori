@@ -7,27 +7,3 @@ def itoa(i) {
         return itoa(i / 10) ~ ['0' + i % 10]
     }
 }
-
-def astoca(name) {
-    ret = ""
-    foreach chr@i: name {
-        if i != 0 {
-            ret = ret ~ ","
-        }
-        ret = ret ~ itoa(chr)
-    }
-    return ret
-}
-
-def fetch(name) {
-    ret = read("#return await fetch(String.fromCharCode(" ~ astoca(name) ~ "))")
-    return ret
-}
-
-def theme.edit(edit) {
-    read("#loadtheme({edit: String.fromCharCode(" ~ astoca(edit) ~ ")})")
-}
-
-def theme.page(edit) {
-    read("#loadtheme({page: String.fromCharCode(" ~ astoca(edit) ~ ")})")
-}
