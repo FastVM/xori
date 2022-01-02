@@ -88,7 +88,7 @@ document.body.onload = () => {
 
         const lastTime = localStorage.getItem('page.head.time');
         if (lastTime != null) {
-            document.getElementById('time').innerText = lastTime;
+            document.getElementById('time').innerText = `${lastTime}ms`;
         }
     }
     

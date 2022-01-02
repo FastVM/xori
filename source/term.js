@@ -64,7 +64,7 @@ const saveWith = (vm, state) => {
     };
 };
 
-const runState = async(state, vm, todo) => {
+const runState = async (state, vm, todo) => {
     let rem = 0;
     while (state !== 0) {
         if (rem < 0) {
@@ -80,7 +80,7 @@ const runState = async(state, vm, todo) => {
         }
         state = vm.ccall('vm_run', 'int', ['int'], [state]);
     }
-    self.postMessage({type: 'end'});
+    self.postMessage({ type: 'end' });
 }
 
 const runSrc = async (src) => {
@@ -91,13 +91,13 @@ const runSrc = async (src) => {
     const args = ['./boot.vm', '-e', `import("browser.paka") ${src}`];
     const mod = {};
     mod["print"] = (txt) => {
-        self.postMessage({type: 'line', value: txt});
+        self.postMessage({ type: 'line', value: txt });
     };
     mod.vm_do_eval_func = (out, str) => {
         todo.push([out, new AsyncFunction(str)]);
     };
     mod.vm_do_saved = (buf) => {
-        self.postMessage({type: 'save', value: buf});
+        self.postMessage({ type: 'save', value: buf });
     };
 
     mod.vm_do_file_put_func = (str) => { };
@@ -117,22 +117,22 @@ const runSave = async (save) => {
 
     const mod = {};
     mod["print"] = (txt) => {
-        self.postMessage({type: 'line', value: txt});
+        self.postMessage({ type: 'line', value: txt });
     };
     mod.vm_do_eval_func = (out, str) => {
         todo.push([out, new AsyncFunction(str)]);
     };
     mod.vm_do_saved = (buf) => {
-        self.postMessage({type: 'save', value: buf});
+        self.postMessage({ type: 'save', value: buf });
     };
 
-    mod.vm_do_file_put_func = (str) => { };
+    mod.vm_do_file_put_func = (str) => { };lastTime
 
     const vm = await create(mod);
-    
+
     const dataPtr = mod._malloc(save.length);
     const dataHeap = new Uint8Array(mod.HEAPU8.buffer, dataPtr, save.length);
-    dataHeap.set( new Uint8Array(save) );
+    dataHeap.set(new Uint8Array(save));
 
     let state = vm.ccall('vm_api_load_save', 'int', ['int', 'pointer'], [save.length, dataPtr]);
     mod._free(dataPtr);
@@ -140,12 +140,16 @@ const runSave = async (save) => {
     runState(state, vm, todo);
 }
 
-self.onmessage = ({data: {type, value}}) => {
-    if (type === 'src') {
-        runSrc(value);
-    } else if (type === 'save') {
-        runSave(JSON.parse(value));
-    } else {
-        throw new Error('err self message: ' + type);
+self.onmessage = async ({ data: { type, value } }) => {
+    try {
+        if (type === 'src') {
+            await runSrc(value);
+        } else if (type === 'save') {
+            await runSave(JSON.parse(value));
+        } else {
+            throw new Error('err self message: ' + type);
+        }
+    } catch (e) {
+        self.postMessage({type: 'end'});
     }
 };
