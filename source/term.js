@@ -126,7 +126,7 @@ const runSave = async (save) => {
         self.postMessage({ type: 'save', value: buf });
     };
 
-    mod.vm_do_file_put_func = (str) => { };lastTime
+    mod.vm_do_file_put_func = (str) => { };
 
     const vm = await create(mod);
 
