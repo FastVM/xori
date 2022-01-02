@@ -10,10 +10,10 @@ jobs:
       - name: Setup cache
         uses: actions/cache@v2
         with:
-          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-${{ hashFiles('./package-lock.json') }}
           path: |
-            '**/node_modules'
-            '**/emsdk-cache'
+            './node_modules'
+            './emsdk-cache'
       - uses: mymindstorm/setup-emsdk@v11
         with: 
           version: 2.0.33
