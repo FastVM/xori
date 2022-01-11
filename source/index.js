@@ -72,17 +72,16 @@ document.body.onload = () => {
             const src = String(code);
             termElem.innerText += src;
             text += src;
-            localStorage.setItem('page.term.text', text);
         },
 
         reset: () => {
             termElem.innerText = '';
             text = '';
-            localStorage.setItem('page.term.text', text);
+            localStorage.setItem('vm.save.text', '');
         }
     };
 
-    const lastText = localStorage.getItem('page.term.text');
+    const lastText = localStorage.getItem('vm.save.text');
     if (lastText != null && lastText !== '') {
         document.getElementById('terminal').innerText = lastText;
 
@@ -141,7 +140,6 @@ document.body.onload = () => {
 
     window.runit = async () => {
         term.reset();
-        localStorage.setItem('page.term.text', '');
         let src = ed().replace(/[\t\r]+/g, ' ');
         lastTime = new Date();
         await runMsg({type: 'src', value: src})
